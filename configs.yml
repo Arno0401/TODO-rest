@@ -1,8 +1,8 @@
 database:
   user: arno
-  password: 909209866sh
-  dbname: TODO
-  host: localhost
+  password: 5O4QjCtgfT0W71p4ugmtwb1WbwjMS2Ds
+  dbname: todo_px3l
+  host: dpg-cubld0ogph6c73a7dls0-a
   port: 5432
   ssl_mode: disable
 token:
