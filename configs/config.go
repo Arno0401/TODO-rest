@@ -1,8 +1,8 @@
 package config
 
 import (
-	"gopkg.in/yaml.v3"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -29,19 +29,29 @@ type Config struct {
 var DBConfig Config
 
 func GetDBConfig() {
-	file, err := os.Open("configs.yml")
-	if err != nil {
-		panic(err)
-	}
-	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
-			panic(err)
-		}
-	}(file)
+	DBConfig.Server.Host = getEnv("SERVER_HOST", "127.0.0.1")
+	DBConfig.Server.Port = getEnv("SERVER_PORT", "2211")
+	DBConfig.Database.User = getEnv("DB_USER", "arno")
+	DBConfig.Database.Password = getEnv("DB_PASSWORD", "909209866sh")
+	DBConfig.Database.DBName = getEnv("DB_NAME", "TODO")
+	DBConfig.Database.Host = getEnv("DB_HOST", "localhost")
+	DBConfig.Database.Port = getEnvInt("DB_PORT", 5432)
+	DBConfig.Database.SSLMode = getEnv("DB_SSL_MODE", "disable")
+	DBConfig.Token.Secret = getEnv("TOKEN_SECRET", "my_secret_key")
+}
 
-	decoder := yaml.NewDecoder(file)
-	if err := decoder.Decode(&DBConfig); err != nil {
-		panic(err)
+func getEnv(key, defaultValue string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return value
 	}
+	return defaultValue
+}
+
+func getEnvInt(key string, defaultValue int) int {
+	if value, exists := os.LookupEnv(key); exists {
+		if i, err := strconv.Atoi(value); err == nil {
+			return i
+		}
+	}
+	return defaultValue
 }
