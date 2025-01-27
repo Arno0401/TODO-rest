@@ -29,7 +29,7 @@ type Config struct {
 var DBConfig Config
 
 func GetDBConfig() {
-	DBConfig.Server.Host = getEnv("SERVER_HOST", "100.20.92.101")
+	DBConfig.Server.Host = getEnv("SERVER_HOST", "0.0.0.0")
 	DBConfig.Server.Port = getEnv("SERVER_PORT", "2211")
 	DBConfig.Database.User = getEnv("DB_USER", "arno")
 	DBConfig.Database.Password = getEnv("DB_PASSWORD", "5O4QjCtgfT0W71p4ugmtwb1WbwjMS2Ds")
