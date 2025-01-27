@@ -37,7 +37,7 @@ func GetDBConfig() {
 	DBConfig.Database.Host = getEnv("DB_HOST", "localhost")
 	DBConfig.Database.Port = getEnvInt("DB_PORT", 5432)
 	DBConfig.Database.SSLMode = getEnv("DB_SSL_MODE", "disable")
-	DBConfig.Token.Secret = getEnv("TOKEN_SECRET", "my_secret_key")
+	DBConfig.Token.Secret = getEnv("TOKEN_SECRET", "arno")
 }
 
 func getEnv(key, defaultValue string) string {
