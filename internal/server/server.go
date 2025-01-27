@@ -35,6 +35,6 @@ func New(handler *handler.Handler) *Server {
 }
 
 func (s *Server) Run() error {
-	addr := net.JoinHostPort(config.DBConfig.Server.Host, config.DBConfig.Server.Host)
+	addr := net.JoinHostPort(config.DBConfig.Server.Host, config.DBConfig.Server.Port)
 	return s.g.Run(addr)
 }
