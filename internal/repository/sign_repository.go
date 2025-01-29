@@ -88,3 +88,4 @@ func (r *Repository) ChangePassword(userID int, oldPassword, newPassword string)
 	}
 	return nil
 }
+ 

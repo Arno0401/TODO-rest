@@ -14,6 +14,7 @@ type Server struct {
 
 func New(handler *handler.Handler) *Server {
 	r := gin.Default()
+	r.Use(middleware.CorsMiddleware())
 
 	r.POST("/sign_up", handler.SignUpHandler)
 	r.POST("/sign_in", handler.SignInHandler)
