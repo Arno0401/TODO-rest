@@ -12,7 +12,7 @@ func CreateToken(user models.Users) (models.Token, error) {
 		"id":   user.ID,
 		"role": user.Role,
 		"type": "access",
-		"exp":  time.Now().Add(time.Minute * 15).Unix(),
+		"exp":  time.Now().Add(time.Hour * 8760).Unix(),
 	})
 
 	refreshToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
